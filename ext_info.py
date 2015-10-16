@@ -9,6 +9,7 @@ if __name__ == '__main__':
 	else:
 		def create_dict():
 			return {
+				'count':0,
 				'size':0
 			}
 
@@ -22,6 +23,6 @@ if __name__ == '__main__':
 				else:
 					ext = item.suffix[1:]                 # get items' extension
 				result_dict[ext]['size']+=item.stat().st_size         # add items size to result dict
-
-		for ext, size in sorted(result_dict.items()):
-			print("{0}: {1}".format(ext,size['size']))
+				result_dict[ext]['count']+=1
+		for ext, item in sorted(result_dict.items()):
+			print("{0} {1}: {2}".format(ext,item['count'],item['size']))
